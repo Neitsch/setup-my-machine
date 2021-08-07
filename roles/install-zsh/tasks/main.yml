@@ -2,7 +2,14 @@
 - name: Install zsh
   apt:
     name: zsh
+
+- name: Check config exists
+  stat:
+    path: ~/.zshrc
+  register: zshrc_exists
+
 - name: Ensure config exists
   ansible.builtin.file:
     path: ~/.zshrc
     state: touch
+  when: not zshrc_exists.stat.exists
