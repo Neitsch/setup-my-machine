@@ -1,0 +1,51 @@
+---
+# tasks file for source-code-pro
+- name: Copy fonts
+  file: path="~/.fonts" state=directory
+
+- name: Checkout Source Code Pro
+  git:
+    repo: "https://github.com/adobe-fonts/source-code-pro.git"
+    dest: ~/.source-code-pro
+    version: 1.017R
+
+- name: copy source code pro font
+  copy:
+    src: "{{ item }}"
+    dest: "~/.fonts"
+  with_fileglob:
+    - "~/source-code-pro/OTF/*.otf"
+  notify: reload font cache
+
+- name: Clone powerline font
+  git:
+    depth: 1
+    repo: https://github.com/powerline/fonts.git
+    dest: ~/.powerline-fonts
+  register: powerline_checkout
+
+- name: Check config exists
+  stat:
+    path: ~/.powerline-fonts.commit
+  register: powerline_commit_exists
+
+- name: Ensure config exists
+  ansible.builtin.file:
+    path: ~/.zshrc
+    state: touch
+  when: not powerline_commit_exists.stat.exists
+
+- name: Read previous powerline commit hash
+  shell: cat ~/.powerline-fonts.commit
+  register: powerline_last_commit
+
+- name: install powerline
+  command:
+    chdir: ~/.powerline-fonts
+    cmd: "./install.sh"
+  when: powerline_last_commit.stdout_lines == "{{ powerline_checkout.after }}"
+
+- name: write powerline commit hash to file
+  copy:
+    content: "{{ powerline_checkout.after }}"
+    dest: ~/.powerline-fonts.commit

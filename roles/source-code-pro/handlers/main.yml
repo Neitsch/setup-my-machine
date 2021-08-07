@@ -1,0 +1,4 @@
+---
+# handlers file for source-code-pro
+- name: reload font cache
+  command: fc-cache -f -v
