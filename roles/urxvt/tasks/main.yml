@@ -6,10 +6,15 @@
     pkg:
       - rxvt-unicode
 
+- name: Create systemd directory
+  ansible.builtin.file:
+    path: ~/.config/systemd/user/
+    state: directory
+
 - name: install urxvtd service
-    copy:
-      src: urxvtd.service
-      dest: urxvtd.service
+  copy:
+    src: urxvtd.service
+    dest: ~/.config/systemd/user/urxvtd.service
 
 - name: enable urxvtd service
   service:
