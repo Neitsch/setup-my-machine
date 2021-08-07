@@ -1,0 +1,7 @@
+---
+# tasks file for x11
+- name: Install x11 Packages
+  become: true
+  apt:
+    pkg:
+      - xorg
