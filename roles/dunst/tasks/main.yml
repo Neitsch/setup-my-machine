@@ -1,0 +1,24 @@
+---
+# tasks file for dunst
+- name: Install x11 Packages
+  become: true
+  apt:
+    pkg:
+      - dunst
+
+- name: install dunst service
+  copy:
+    src: dunst.service
+    dest: ~/.config/systemd/user/dunst.service
+
+- name: enable dunst service
+  service:
+    name: dunst
+    enabled: yes
+    scope: user
+
+- name: start dunst
+  service:
+    name: dunst
+    state: started
+    scope: user
