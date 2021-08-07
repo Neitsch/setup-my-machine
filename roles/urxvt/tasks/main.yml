@@ -20,10 +20,11 @@
   service:
     name: urxvtd
     enabled: yes
-    user: yes
+    scope: user
 
 - name: start urxvtd
   service:
     name: urxvtd
     state: started
     user: yes
+    scope: user
