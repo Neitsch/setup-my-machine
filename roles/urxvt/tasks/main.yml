@@ -20,8 +20,10 @@
   service:
     name: urxvtd
     enabled: yes
+    user: yes
 
 - name: start urxvtd
   service:
     name: urxvtd
-    enabled: yes
+    state: started
+    user: yes
