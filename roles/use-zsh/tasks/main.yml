@@ -1,6 +1,12 @@
 ---
 # tasks file for use-zsh
-- name: Set zsh as shell
-  ansible.builtin.user:
-    name: "{{ ansible_user_id }}"
-    shell: /bin/zsh
+- name: set up zsh for user
+  become: no
+  vars:
+    user_id: "{{ ansible_user_id }}"
+  tasks:
+    - name: change user shell to zsh
+      become: yes
+      user:
+        name: "{{ user_id }}"
+        shell: /bin/zsh

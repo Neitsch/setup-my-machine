@@ -1,0 +1,43 @@
+---
+# tasks file for zsh-config
+- name: custom config
+  blockinfile:
+    block: |
+      CASE_SENSITIVE="false"
+      HYPHEN_INSENSITIVE="true"
+DISABLE_AUTO_UPDATE="true"
+DISABLE_UPDATE_PROMPT="true"
+DISABLE_MAGIC_FUNCTIONS="false"
+DISABLE_LS_COLORS="false"
+DISABLE_AUTO_TITLE="false"
+ENABLE_CORRECTION="true"
+COMPLETION_WAITING_DOTS="true"
+DISABLE_UNTRACKED_FILES_DIRTY="false"
+HIST_STAMPS="yyyy-mm-dd"
+autoload -U compinit && compinit
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=10000000
+SAVEHIST=10000000
+setopt BANG_HIST
+setopt EXTENDED_HISTORY
+setopt INC_APPEND_HISTORY
+setopt SHARE_HISTORY
+setopt HIST_EXPIRE_DUPS_FIRST
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_REDUCE_BLANKS
+setopt HIST_VERIFY
+setopt auto_cd
+setopt correct_all
+setopt auto_list
+setopt auto_menu
+setopt always_to_end
+export PAGER="less"
+bindkey -v
+bindkey -M vicmd '?' fzf-history-widget
+bindkey -M vicmd '/' history-incremental-search-forward
+export KEYTIMEOUT=1
+    path: ~/.zshrc
+    marker: "# {mark} custom-config"

@@ -1,0 +1,26 @@
+---
+# tasks file for zsh-powerline
+- name: p10k config
+  blockinfile:
+    insertbefore: BOF
+    block: |
+      if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+        source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+      fi
+      ZSH_THEME="powerlevel10k/powerlevel10k"
+      export POWERLINE_CONFIG_COMMAND=~/.local/bin/powerline-config
+      export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=242"
+      [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+    path: ~/.zshrc
+    marker: "# {mark} p10k"
+
+- name: P10K Config
+  copy:
+    src: .p10k.zsh
+    dest: ~/.p10k.zsh
+
+- name: Clone completions
+  git:
+    depth: 1
+    repo: https://github.com/romkatv/powerlevel10k.git
+    dest: ~/.oh-my-zsh/custom/themes/powerlevel10k

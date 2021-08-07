@@ -2,3 +2,7 @@
 - name: Install zsh
   apt:
     name: zsh
+- name: Ensure config exists
+  ansible.builtin.file:
+    path: ~/.zshrc
+    state: touch
