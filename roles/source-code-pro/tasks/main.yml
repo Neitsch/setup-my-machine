@@ -14,7 +14,7 @@
     src: "{{ item }}"
     dest: "~/.fonts"
   with_fileglob:
-    - "~/source-code-pro/OTF/*.otf"
+    - "~/.source-code-pro/OTF/*.otf"
   notify: reload font cache
 
 - name: Clone powerline font
