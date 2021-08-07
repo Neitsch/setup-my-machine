@@ -43,7 +43,7 @@
   command:
     chdir: ~/.powerline-fonts
     cmd: "./install.sh"
-  when: powerline_last_commit.stdout_lines == powerline_checkout.after
+  when: not (powerline_last_commit.stdout_lines == powerline_checkout.after)
 
 - name: write powerline commit hash to file
   copy:
