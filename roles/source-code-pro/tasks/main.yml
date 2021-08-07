@@ -31,7 +31,7 @@
 
 - name: Ensure config exists
   ansible.builtin.file:
-    path: ~/.zshrc
+    path: ~/.powerline-fonts.commit
     state: touch
   when: not powerline_commit_exists.stat.exists
 
