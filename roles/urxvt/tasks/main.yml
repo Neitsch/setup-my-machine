@@ -1,0 +1,22 @@
+---
+# tasks file for urxvt
+- name: Install urxvt Packages
+  become: true
+  apt:
+    pkg:
+      - rxvt-unicode
+
+- name: install urxvtd service
+    copy:
+      src: urxvtd.service
+      dest: urxvtd.service
+
+- name: enable urxvtd service
+  service:
+    name: urxvtd
+    enabled: yes
+
+- name: start urxvtd
+  service:
+    name: urxvtd
+    enabled: yes
