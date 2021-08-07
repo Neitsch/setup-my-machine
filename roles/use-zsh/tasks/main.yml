@@ -1,13 +1,9 @@
 ---
 # tasks file for use-zsh
 - name: set up zsh for user
-  become: no
-  hosts: localhost
   vars:
-    user_id: "{{ ansible_user_id }}"
-  tasks:
-    - name: change user shell to zsh
-      become: yes
-      user:
-        name: "{{ user_id }}"
-        shell: /bin/zsh
+    user_id: "nigel" # sorry for hardcoding this :(
+  become: yes
+  user:
+    name: "{{ user_id }}"
+    shell: /bin/zsh
