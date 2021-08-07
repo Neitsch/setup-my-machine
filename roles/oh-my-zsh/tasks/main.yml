@@ -8,7 +8,7 @@
 - name: custom config
   blockinfile:
     block: |
-      source $ZSH/oh-my-zsh.sh
+      source ~/.oh-my-zsh.sh
     path: ~/.zshrc
     marker: "# {mark} source-oh-my-zsh"
 
