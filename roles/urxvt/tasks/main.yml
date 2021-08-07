@@ -26,5 +26,4 @@
   service:
     name: urxvtd
     state: started
-    user: yes
     scope: user
