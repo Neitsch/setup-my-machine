@@ -1,5 +1,11 @@
 ---
 # tasks file for zsh-powerline
+- name: Install Powerline font
+  become: true
+  apt:
+    pkg:
+      - fonts-powerline
+
 - name: p10k config
   blockinfile:
     insertbefore: BOF

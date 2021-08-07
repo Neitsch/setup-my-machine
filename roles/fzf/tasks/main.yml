@@ -1,0 +1,7 @@
+---
+# tasks file for fzf
+- name: Install fzf
+  become: true
+  apt:
+    pkg:
+      - fzf

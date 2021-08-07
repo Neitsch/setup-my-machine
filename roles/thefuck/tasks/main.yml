@@ -1,0 +1,6 @@
+---
+# tasks file for thefuck
+- name: Install thefuck
+  pip:
+    name: thefuck
+    executable: pip3
