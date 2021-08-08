@@ -40,18 +40,11 @@
   register: powerline_last_commit
   changed_when: false
 
-- name: Debug log
-  ansible.builtin.debug:
-    msg:
-    - "Last applied commit '{{ powerline_last_commit.stdout }}'"
-    - "Last commit '{{ powerline_checkout.after }}'"
-    - "Changed '{{not (powerline_last_commit.stdout == powerline_checkout.after)}}'"
-
 - name: install powerline
   command:
     chdir: ~/.powerline-fonts
     cmd: "./install.sh"
-  when: not (powerline_last_commit.stdout_lines == powerline_checkout.after)
+  when: not (powerline_last_commit.stdout == powerline_checkout.after)
 
 - name: write powerline commit hash to file
   copy:
