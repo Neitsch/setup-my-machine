@@ -5,3 +5,15 @@
   apt:
     pkg:
       - xorg
+
+- name: xsession start
+  copy:
+    content: |
+      systemctl --user import-environment PATH DBUS_SESSION_BUS_ADDRESS
+      systemctl --no-block --user start xsession.target
+    dest: ~/.xsessionrc
+
+- name: install xsession target
+  copy:
+    src: xsession.target
+    dest: ~/.config/systemd/user/xsession.target
