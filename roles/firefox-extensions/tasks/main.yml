@@ -5,6 +5,7 @@
   file: path="/etc/firefox/policies" state=directory
 
 - name: Place policy
+  become: true
   copy:
     src: policies.json
     dest: "/etc/firefox/policies/policies.json"
