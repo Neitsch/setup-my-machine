@@ -23,17 +23,4 @@
     repo: https://github.com/zsh-users/zsh-completions
     dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
 
-- name: "Check if git is installed"
-  command: dpkg-query -l git
-  register: git_is_installed
-  changed_when: false
-
-# - name: plugins
-#   vars:
-#     plugins:
-#       - "{{ ({{ git_is_installed }})  | ternary('git','') }}"
-#   blockinfile:
-#     block: |
-#       plugins=({{ plugins }})
-#     path: ~/.zshrc
-#     marker: "# {mark} plugins"
+- include: plugins.yml

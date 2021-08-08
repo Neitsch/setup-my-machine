@@ -1,0 +1,22 @@
+- name: "Check if git is installed"
+  command: dpkg-query -l git
+  register: git_is_installed
+  changed_when: false
+
+- name: check if ansible is installed
+  shell: "which ansible-playbook"
+  register: ansible_installed
+  ignore_errors: true
+
+- name: plugins
+  vars:
+    plugins:
+      - "{{ ( git_is_installed )  | ternary('git','') }}"
+      - "{{ ( git_is_installed )  | ternary('github','') }}"
+      - "{{ ( git_is_installed )  | ternary('gitignore','') }}"
+      - "{{ ( ansible_installed.rc )  | ternary('ansible','') }}"
+  blockinfile:
+    block: |
+      plugins=({{ plugins | join(' ') }})
+    path: ~/.zshrc
+    marker: "# {mark} plugins"
