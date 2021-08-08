@@ -1,0 +1,17 @@
+---
+# tasks file for emacs
+- name: Install Emacs Packages
+  become: true
+  apt:
+    pkg:
+      - emacs
+
+- name: User systemd directory
+  file: path="~/.config/systemd/user/" state=directory
+
+- name: Emacs Daemon
+  systemd:
+    enabled: true
+    state: started
+    scope: user
+    name: emacs.service

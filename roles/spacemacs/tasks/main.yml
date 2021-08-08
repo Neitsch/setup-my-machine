@@ -1,0 +1,23 @@
+---
+# tasks file for spacemacs
+- name: Install Git
+  become: true
+  apt:
+    pkg:
+      - git
+      - ripgrep
+
+- name: Clone Spacemacs
+  git:
+    accept_hostkey: yes
+    repo: "https://github.com/syl20bnr/spacemacs.git"
+    dest: ~/.emacs.d
+    version: develop
+    depth: 1
+  notify: restart emacs
+
+- name: Spacemacs Config
+  template:
+    src: .spacemacs.j2
+    dest: ~/.spacemacs
+  notify: restart emacs
