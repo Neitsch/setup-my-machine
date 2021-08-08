@@ -1,0 +1,20 @@
+---
+# tasks file for spotify
+- name: Install Spotify apt repo GPG key.
+  become: yes
+  apt_key:
+    id: "8FD3D9A8D3800305A9FFF259D1742AD60D811D58"
+    url:https://download.spotify.com/debian/pubkey_0D811D58.gpg
+    state: present
+
+- name: Add Spotify apt repo.
+  become: yes
+  apt_repository:
+    repo: "deb http://repository.spotify.com stable non-free"
+    state: present
+
+- name: Installs Spotify desktop.
+  become: yes
+  apt:
+    name: spotify-client
+    state: present
