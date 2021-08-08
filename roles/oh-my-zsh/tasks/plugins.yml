@@ -7,6 +7,7 @@
   shell: "which ansible-playbook"
   register: ansible_installed
   ignore_errors: true
+  changed_when: false
 
 - name: plugins
   vars:
@@ -14,7 +15,7 @@
       - "{{ ( git_is_installed )  | ternary('git','') }}"
       - "{{ ( git_is_installed )  | ternary('github','') }}"
       - "{{ ( git_is_installed )  | ternary('gitignore','') }}"
-      - "{{ ( ansible_installed.rc )  | ternary('ansible','') }}"
+      - "{{ ( ansible_installed.rc == 0 )  | ternary('ansible','') }}"
   blockinfile:
     block: |
       plugins=({{ plugins | join(' ') }})
