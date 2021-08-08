@@ -26,6 +26,7 @@
 - name: "Check if git is installed"
   command: dpkg-query -l git
   register: git_is_installed
+  changed_when: false
 
 # - name: plugins
 #   vars:
