@@ -9,6 +9,36 @@
   ignore_errors: true
   changed_when: false
 
+- name: check if docker is installed
+  shell: "which docker"
+  register: docker_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: check if emacs is installed
+  shell: "which emacs"
+  register: emacs_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: check if fzf is installed
+  shell: "which fzf"
+  register: fzf_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: check if thefuck is installed
+  shell: "which thefuck"
+  register: thefuck_installed
+  ignore_errors: true
+  changed_when: false
+
+- name: check if cargo is installed
+  shell: "which cargo"
+  register: cargo_installed
+  ignore_errors: true
+  changed_when: false
+
 - name: plugins
   vars:
     plugins:
@@ -16,6 +46,17 @@
       - "{{ ( git_is_installed )  | ternary('github','') }}"
       - "{{ ( git_is_installed )  | ternary('gitignore','') }}"
       - "{{ ( ansible_installed.rc == 0 )  | ternary('ansible','') }}"
+      - "{{ ( cargo_installed.rc == 0 )  | ternary('cargo','') }}"
+      - "{{ ( fzf_installed.rc == 0 )  | ternary('fzf','') }}"
+      - "{{ ( thefuck_installed.rc == 0 )  | ternary('thefuck','') }}"
+      - "{{ ( emacs_installed.rc == 0 )  | ternary('emacs','') }}"
+      - "{{ ( docker_installed.rc == 0 )  | ternary('docker','') }}"
+      - debian
+      - z
+      - zsh-autosuggestions
+      - zsh-autocompletion
+      - zsh-interactive-cd
+      - zsh-syntax-highlighting
   blockinfile:
     block: |
       plugins=({{ plugins | join(' ') }})
