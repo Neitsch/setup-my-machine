@@ -1,5 +1,20 @@
 {
     "policies": {
+        "AppAutoUpdate": true,
+        "BackgroundAppUpdate": true,
+        "DisableFirefoxAccounts": true,
+        "DisableFirefoxStudies": true,
+        "DisableFormHistory": true,
+        "DisablePasswordReveal": true,
+        "DisablePocket": true,
+        "DisableTelemetry": true,
+        "EnableTrackingProtection": {
+            "Value": true,
+            "Locked": true,
+            "Cryptomining": true,
+            "Fingerprinting": true,
+            "Exceptions": []
+        },
         "ExtensionSettings": {
             "*": {
                 "blocked_install_message": "Custom error message.",
@@ -11,6 +26,32 @@
                 "installation_mode": "force_installed",
                 "install_url": "https://addons.mozilla.org/firefox/downloads/latest/https-everywhere/latest.xpi"
             }
-        }
+        },
+        "ExtensionUpdate": true,
+        "FlashPlugin": {
+            "Allow": [],
+            "Block": [],
+            "Default": false,
+            "Locked": true
+        },
+        "HardwareAcceleration": true,
+        "NetworkPrediction": false,
+        "NoDefaultBookmarks": true,
+        "OfferToSaveLogins": false,
+        "OfferToSaveLoginsDefault": false,
+        "PasswordManagerEnabled": false,
+        "RequestedLocales": ["en-US"],
+        "SearchEngines": {
+            "Default": "DuckDuckGo",
+            "PreventInstalls": true,
+            "Add": [
+                {
+                    "Name": "DuckDuckGo",
+                    "URLTemplate": "https://duckduckgo.com/?q={searchTerms}",
+                    "Method": "GET"
+                }
+            ]
+        },
+        "SearchSuggestEnabled": true
     }
 }
