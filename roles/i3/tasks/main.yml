@@ -6,6 +6,7 @@
     pkg:
       - i3
       - i3status
+      - rofi
 
 - name: Create i3 directory
   ansible.builtin.file:

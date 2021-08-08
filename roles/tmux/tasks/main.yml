@@ -1,0 +1,34 @@
+---
+# tasks file for tmux
+- name: Install tmux Packages
+  become: true
+  apt:
+    pkg:
+      - tmux
+      # - ruby-full
+      # - rubygems
+
+- pip:
+    name:
+      - powerline-status
+    extra_args: --user
+    executable: pip3
+
+# - name: Clone Powerline repo
+#   git:
+#     accept_hostkey: yes
+#     repo: "https://github.com/powerline/powerline.git"
+#     dest: ~/powerline
+#     depth: 1
+
+- name: Create .tmux.conf
+  copy:
+    src: .tmux.conf
+    dest: ~/.tmux.conf
+
+
+# - name: Install tmuxinator
+#   gem:
+#     name: tmuxinator
+#     state: present
+#     version: 1.1.5
