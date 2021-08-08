@@ -1,0 +1,7 @@
+---
+# tasks file for firefox
+- name: Firefox
+  become: yes
+  apt:
+    pkg:
+      - firefox-esr

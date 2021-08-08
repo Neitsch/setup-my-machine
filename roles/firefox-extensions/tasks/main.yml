@@ -1,0 +1,10 @@
+---
+# tasks file for firefox-extensions
+- name: Create policy directory
+  become: true
+  file: path="/etc/firefox/policies" state=directory
+
+- name: Place policy
+  copy:
+    src: policies.json
+    dest: "/etc/firefox/policies/policies.json"

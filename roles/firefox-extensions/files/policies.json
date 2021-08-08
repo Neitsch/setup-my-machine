@@ -1,0 +1,14 @@
+{
+    "ExtensionSettings": {
+        "*": {
+            "blocked_install_message": "Custom error message.",
+            "install_sources": ["about:addons","https://addons.mozilla.org/"],
+            "installation_mode": "blocked",
+            "allowed_types": ["extension"]
+        },
+        "https-everywhere@eff.org": {
+            "installation_mode": "force_installed",
+            "install_url": "https://addons.mozilla.org/firefox/downloads/latest/https-everywhere/latest.xpi"
+        }
+    }
+}
