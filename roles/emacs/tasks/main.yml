@@ -15,3 +15,11 @@
     state: started
     scope: user
     name: emacs.service
+
+- name: custom config
+  blockinfile:
+    block: |
+      export EDITOR="emacsclient -t -a emacs"
+      export VISUAL="emacsclient -c -a emacs"
+    path: ~/.zshrc
+    marker: "# {mark} emacs"

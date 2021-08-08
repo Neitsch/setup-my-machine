@@ -1,0 +1,23 @@
+---
+# tasks file for dnscrypt
+- name: Install Dnscrypt Packages
+  become: true
+  apt:
+    pkg:
+      - dnscrypt-proxy
+
+- name: Dnscrypt Config
+  become: true
+  copy:
+    src: dnscrypt.conf
+    dest: /etc/dnscrypt-proxy/dnscrypt-proxy.toml
+  notify: restart dnscrypt
+
+- meta: flush_handlers
+
+- name: dnscrypt running
+  become: true
+  service:
+    name: dnscrypt-proxy
+    state: started
+    enabled: yes

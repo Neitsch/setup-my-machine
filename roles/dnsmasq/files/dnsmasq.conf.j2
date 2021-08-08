@@ -1,0 +1,19 @@
+# Configuration file for dnsmasq.
+#
+# Format is one option per line, legal options are the same
+# as the long options legal on the command line. See
+# "/usr/sbin/dnsmasq --help" or "man 8 dnsmasq" for details.
+server=127.0.0.1#5353
+domain-needed
+bogus-priv
+#conf-file=%%PREFIX%%/share/dnsmasq/trust-anchors.conf
+#dnssec
+stop-dns-rebind
+strict-order
+cache-size=8192
+log-async
+log-dhcp
+log-facility=/var/log/dnsmasq.log
+listen-address=127.0.0.1
+interface=lo
+bind-interfaces

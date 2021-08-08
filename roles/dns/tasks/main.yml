@@ -1,0 +1,29 @@
+---
+# tasks file for dns
+- name: Disable network manager dns config
+  become: yes
+  ini_file:
+    path: /etc/NetworkManager/NetworkManager.conf
+    state: present
+    no_extra_spaces: yes
+    section: main
+    option: dns
+    value: none
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify:
+    - reload NetworkManager
+
+- name: deploy resolv.conf template
+  become: yes
+  copy:
+    src: resolv.conf
+    dest: /etc/resolv.conf
+    owner: root
+    group: root
+    mode: 0644
+    backup: yes
+  notify:
+    - reload NetworkManager

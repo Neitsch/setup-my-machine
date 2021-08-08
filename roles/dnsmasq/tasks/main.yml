@@ -1,0 +1,23 @@
+---
+# tasks file for dnsmasq
+- name: Install Dnsmasq Packages
+  become: true
+  apt:
+    pkg:
+      - dnsmasq
+
+- name: Dnsmasq Config
+  become: true
+  copy:
+    src: dnsmasq.conf
+    dest: /etc/dnsmasq.conf
+  notify: restart dnsmasq
+
+- meta: flush_handlers
+
+- name: dnsmasq running
+  become: true
+  service:
+    name: dnsmasq
+    state: started
+    enabled: yes
