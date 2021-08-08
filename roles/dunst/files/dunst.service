@@ -7,6 +7,8 @@ PartOf=graphical-session.target
 Type=dbus
 BusName=org.freedesktop.Notifications
 ExecStart=/usr/bin/dunst
+Environment=DISPLAY=:0.0
+Environment=XAUTHORITY=/home/nigel/.Xauthority
 
 [Install]
 WantedBy=xsession.target
