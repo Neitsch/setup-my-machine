@@ -4,3 +4,10 @@
   pip:
     name: thefuck
     executable: pip3
+
+- name: Add to zsh
+  blockinfile:
+    block: |
+      eval $(thefuck --alias)
+    path: ~/.zshrc
+    marker: "# {mark} thefuck"
