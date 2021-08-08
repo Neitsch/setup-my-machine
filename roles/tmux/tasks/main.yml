@@ -14,12 +14,12 @@
     extra_args: --user
     executable: pip3
 
-# - name: Clone Powerline repo
-#   git:
-#     accept_hostkey: yes
-#     repo: "https://github.com/powerline/powerline.git"
-#     dest: ~/powerline
-#     depth: 1
+- name: Clone Powerline repo
+  git:
+    accept_hostkey: yes
+    repo: "https://github.com/powerline/powerline.git"
+    dest: ~/.powerline
+    depth: 1
 
 - name: Create .tmux.conf
   copy:
