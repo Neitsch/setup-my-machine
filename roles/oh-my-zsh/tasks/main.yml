@@ -10,6 +10,7 @@
     block: |
       export ZSH=$HOME/.oh-my-zsh
       source $ZSH/oh-my-zsh.sh
+      ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
     path: ~/.zshrc
     marker: "# {mark} source-oh-my-zsh"
 
