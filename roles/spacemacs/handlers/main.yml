@@ -1,2 +1,7 @@
 ---
 # handlers file for spacemacs
+- name: restart emacs
+  systemd:
+    state: restarted
+    scope: user
+    name: "emacs.service"
