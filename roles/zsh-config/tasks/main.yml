@@ -14,7 +14,6 @@
       COMPLETION_WAITING_DOTS="true"
       DISABLE_UNTRACKED_FILES_DIRTY="false"
       HIST_STAMPS="yyyy-mm-dd"
-      autoload -U compinit && compinit
       HISTFILE="$HOME/.zsh_history"
       HISTSIZE=10000000
       SAVEHIST=10000000

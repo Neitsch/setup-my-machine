@@ -81,5 +81,6 @@
   blockinfile:
     block: |
       plugins=({{ plugins | join(' ') }})
+      autoload -U compinit && compinit
     path: ~/.zshrc
     marker: "# {mark} plugins"
