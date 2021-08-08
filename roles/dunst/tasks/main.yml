@@ -5,6 +5,7 @@
   apt:
     pkg:
       - dunst
+      - libnotify-bin
 
 - name: install dunst service
   copy:
