@@ -13,14 +13,4 @@
     path: ~/.zshrc
     marker: "# {mark} source-oh-my-zsh"
 
-- name: Clone autosuggestions
-  git:
-    repo: https://github.com/zsh-users/zsh-autosuggestions
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
-
-- name: Clone completions
-  git:
-    repo: https://github.com/zsh-users/zsh-completions
-    dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
-
 - include: plugins.yml

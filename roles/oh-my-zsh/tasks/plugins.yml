@@ -1,3 +1,19 @@
+- name: Install syntax highlight Packages
+  become: true
+  apt:
+    pkg:
+      - zsh-syntax-highlighting
+
+- name: Clone autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Clone completions
+  git:
+    repo: https://github.com/zsh-users/zsh-completions
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-completions
+
 - name: "Check if git is installed"
   command: dpkg-query -l git
   register: git_is_installed
@@ -54,7 +70,7 @@
       - debian
       - z
       - zsh-autosuggestions
-      - zsh-autocompletion
+      - zsh-completion
       - zsh-interactive-cd
       - zsh-syntax-highlighting
   blockinfile:
